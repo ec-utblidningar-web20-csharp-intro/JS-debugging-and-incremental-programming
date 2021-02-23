@@ -2,8 +2,8 @@
 
 ## Normal debugging
 
-- [ ] lärare debuggar resetSections
-- [ ] ni debuggar createSections
+- [x] lärare debuggar resetSections
+- [x] ni debuggar createSections
 
 ## Moduler
 
