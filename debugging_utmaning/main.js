@@ -53,7 +53,7 @@ function resetSections() {
 
   let sectionChildren = sectionParent.childNodes;
   for (let i = sectionChildren.length - 1; i >= 0; i--) {
-    let sectionChildren = sectionChildren[i];
+    sectionChildren = sectionChildren[i];
     sectionChildren.remove();
   }
 }
