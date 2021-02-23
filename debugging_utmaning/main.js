@@ -27,7 +27,9 @@ function createSections(count) {
     let child = document.createElement("section");
     let title = document.createElement("h2");
     let picture = document.createElement("img");
-    img.src = "img/Blog_Bild.jpg";
+
+    picture.src = "img/Blog_Bild.jpg";
+
     let blogtext = document.createElement("p2");
 
     title.innerHTML = "Title " + (i + 1);
@@ -51,7 +53,7 @@ function resetSections() {
 
   let sectionChildren = sectionParent.childNodes;
   for (let i = sectionChildren.length - 1; i >= 0; i--) {
-    let sectionChild = sectionChildren[i];
-    sectionChild.remove();
+    let sectionChildren = sectionChildren[i];
+    sectionChildren.remove();
   }
 }
