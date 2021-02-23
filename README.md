@@ -8,7 +8,7 @@
 ## Moduler
 
 - [ ] timer för page load
-- [ ] tic-tac-toe
+- [x] tic-tac-toe
 
 ---
 
