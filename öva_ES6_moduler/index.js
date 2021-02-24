@@ -1,25 +1,25 @@
 import * as game from "./js/tick-tack-toe.js";
 import { fetchCat } from "./js/fetch-cat.js";
+import * as store from "./js/store.js";
 
-// Ambition:
 // När sidan startar, kolla om användaren har en high-score och en redan vald kattbild
-let winCount = 0;
-let userCatUrl = "";
-//TODO ladda användar data från tidigare session
+let winCount = Number(store.get("myScore") ?? 0);
+let userCatUrl =
+  store.get("myImage") ?? "https://cdn2.thecatapi.com/images/MTYwNzk5MA.jpg";
 
-if (userCatUrl === "") {
-  fetchCat().then(function (url) {
-    userCatUrl = url;
-    document.querySelector("#user-img").src = url;
-    //TODO spara ner katt url
-  });
-}
+// Ställ in sidan enligt laddad data
+document.querySelector("#user-img").src = userCatUrl;
 
+const heading = document.querySelector("#win-count");
+heading.innerText = "Du har vunnit " + winCount + " gånger";
+
+// Eventhantering
 document.querySelector("#pick").onclick = function (e) {
   fetchCat().then(function (url) {
     userCatUrl = url;
     document.querySelector("#user-img").src = url;
-    //TODO spara ner katt url
+
+    store.set("myImage", userCatUrl);
   });
 };
 
@@ -37,7 +37,8 @@ for (let y = 0; y < 3; y++) {
 
         const heading = document.querySelector("#win-count");
         heading.innerText = "Du har vunnit " + winCount + " gånger";
-        //TODO spara ner score
+
+        store.set("myScore", winCount);
       }
     };
   }

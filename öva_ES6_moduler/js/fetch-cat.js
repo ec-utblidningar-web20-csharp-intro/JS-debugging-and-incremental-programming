@@ -11,8 +11,13 @@ export { fetchCat };
 // };
 
 async function fetchCat() {
+  console.time("Tid att få katt bild");
   let resp = await fetch("https://api.thecatapi.com/v1/images/search");
+  console.timeEnd("Tid att få katt bild");
+
+  console.time("Tid att få json objeket");
   let obj = await resp.json();
+  console.timeEnd("Tid att få json objeket");
 
   let url = obj[0].url;
   return url;
