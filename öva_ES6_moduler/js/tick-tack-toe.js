@@ -1,12 +1,19 @@
 export { board, placeMark, reset, checkWinner };
 
 // - - - - - Spelrelaterad kod - - - - -
+// tick-tack-toe.js har all data och alla regler
+// som man behöver för att spela luffarschack
+
 let board = [[], [], []];
 let playerOneTurn;
 
 reset();
 
 function placeMark(x, y) {
+  let check = checkWinner();
+
+  if (check.winner) return;
+
   if (board[x][y] === "") {
     // placera markör
     board[x][y] = playerOneTurn ? "O" : "X";
@@ -25,6 +32,7 @@ function reset() {
 }
 
 function checkWinner() {
+  console.time("Winner check");
   // prettier-ignore
   let triplets = [
       // rader
@@ -46,9 +54,11 @@ function checkWinner() {
     const c = board[triplet[2].x][triplet[2].y];
 
     if (a === b && a === c && a !== "") {
+      console.timeEnd("Winner check");
       return { winner: true, player: a === "O" ? "one" : "two" };
     }
   }
 
+  console.timeEnd("Winner check");
   return { winner: false };
 }

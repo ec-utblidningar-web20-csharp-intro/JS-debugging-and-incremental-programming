@@ -1,3 +1,8 @@
+// store.js ansvarar för att spara data mellan hemsidebesök
+// en slags långvarighetsmodul
+
+export { get, set };
+
 // om moduler https://javascript.info/modules-intro
 // om cookies https://www.w3schools.com/js/js_cookies.asp
 
@@ -5,15 +10,12 @@
 //document.cookie = "myScore=4;";
 //document.cookie = "myUrl=https://cdn2.thecatapi.com/images/507.jpg;";
 
-setCookie("test", "fem");
-console.log(getCookie());
-
 // Steg 2: skapa hjälpfunktioner (save, load) som kan exporteras bort från modulen
-function setCookie(key, value) {
+function set(key, value) {
   document.cookie = `${key}=${value};`;
 }
 
-function getCookie() {
+function get(myKey) {
   let obj = {};
   //console.log(document.cookie);
 
@@ -24,13 +26,11 @@ function getCookie() {
 
     //console.log(`key:${key} value:${value}`);
 
-    obj[key] = value;
+    if (myKey === key) return value;
   }
 
-  return obj;
+  return undefined;
 }
-
-debugger;
 
 // Fantisera lite om hur funktionerna hade kunnat användas, tex. som nedan
 // save("myUrl", userCatUrl);
